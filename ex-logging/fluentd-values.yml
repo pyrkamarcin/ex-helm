@@ -1,0 +1,8 @@
+elasticsearch:
+  host: elasticsearch-master.default.svc.cluster.local
+
+configMaps:
+  useDefaults:
+    systemInputConf: false
+    forward.input.conf: false
+    monitoring.conf: false

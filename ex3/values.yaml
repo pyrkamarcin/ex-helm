@@ -1,0 +1,7 @@
+replicaCount: 5
+image: "docker.io/kwakuuuu/test:latest"
+service:
+    name: ghost
+    internalPort: 2368
+    externalPort: 80
+    type: LoadBalancer
