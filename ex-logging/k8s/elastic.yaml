@@ -90,7 +90,7 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 200M
+          storage: 500M
       storageClassName: hostpath
   template:
     metadata:
@@ -216,22 +216,3 @@ spec:
         volumeMounts:
           - name: "elasticsearch-master"
             mountPath: /usr/share/elasticsearch/data
----
-# Source: elasticsearch/templates/test/test-elasticsearch-health.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "elasticsearch-oekky-test"
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-  - name: "elasticsearch-pcgtv-test"
-    image: "docker.elastic.co/elasticsearch/elasticsearch:7.5.0"
-    command:
-      - "sh"
-      - "-c"
-      - |
-        #!/usr/bin/env bash -e
-        curl -XGET --fail 'elasticsearch-master:9200/_cluster/health?wait_for_status=green&timeout=1s'
-  restartPolicy: Never

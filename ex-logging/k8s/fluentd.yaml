@@ -310,7 +310,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: fluentd-fluentd-elasticsearch
-  namespace: default
+  namespace: logging
 roleRef:
   kind: ClusterRole
   name: fluentd-fluentd-elasticsearch
@@ -357,7 +357,7 @@ spec:
         - name: FLUENTD_ARGS
           value: "--no-supervisor -q"
         - name: OUTPUT_HOST
-          value: "elasticsearch-master.default.svc.cluster.local"
+          value: "elasticsearch-master.logging.svc.cluster.local"
         - name: OUTPUT_PORT
           value: "9200"
         - name: OUTPUT_PATH
