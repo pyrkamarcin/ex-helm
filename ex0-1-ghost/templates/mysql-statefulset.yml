@@ -34,3 +34,10 @@ spec:
               value: ghost_password
             - name: MYSQL_DATABASE
               value: ghost
+          volumeMounts:
+          - mountPath: "/var/lib/mysql"
+            name: my-pvc
+      volumes:
+        - name: my-pvc
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc

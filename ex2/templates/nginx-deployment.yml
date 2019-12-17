@@ -30,8 +30,8 @@ spec:
             - containerPort: 80
           volumeMounts:
           - mountPath: "/var/log/nginx"
-            name: pvc
+            name: my-internal-pvc
       volumes:
-        - name: pvc
+        - name: my-internal-pvc
           persistentVolumeClaim:
             claimName: nginx-pvc
