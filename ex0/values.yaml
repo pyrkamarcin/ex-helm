@@ -1,0 +1,7 @@
+replicas: 5
+image:
+    name: containous/whoami
+    tag: v1.4.0
+
+ports:
+    public: 8080

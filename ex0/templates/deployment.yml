@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-application-deployment
+spec:
+  replicas: {{ .Values.replicas }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      name: application
+      stage: dev
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        name: application
+        stage: dev
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: application
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+          resources:
+            limits:
+              memory: "32Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 80

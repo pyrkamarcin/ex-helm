@@ -1,0 +1,4 @@
+replicas: 5
+image:
+    name: ghost
+    tag: 3.1.1
