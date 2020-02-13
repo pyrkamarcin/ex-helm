@@ -5,7 +5,6 @@ metadata:
 spec:
   selector:
     name: application
-    stage: dev
     release: {{ .Release.Name }}
   type: ClusterIP
   ports:

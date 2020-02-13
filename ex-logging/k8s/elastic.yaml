@@ -90,8 +90,7 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 500M
-      storageClassName: hostpath
+          storage: 2G
   template:
     metadata:
       name: "elasticsearch-master"
@@ -100,7 +99,6 @@ spec:
         release: "elasticsearch"
         chart: "elasticsearch"
         app: "elasticsearch-master"
-      annotations:
         
     spec:
       securityContext:
@@ -119,7 +117,6 @@ spec:
                   values:
                   - "elasticsearch-master"
       terminationGracePeriodSeconds: 120
-      volumes:
       initContainers:
       - name: configure-sysctl
         securityContext:
@@ -187,11 +184,7 @@ spec:
           containerPort: 9300
         resources:
           limits:
-            cpu: 1000m
-            memory: 512M
-          requests:
-            cpu: 100m
-            memory: 512M
+            memory: 1024M
         env:
           - name: node.name
             valueFrom:
@@ -206,7 +199,7 @@ spec:
           - name: network.host
             value: "0.0.0.0"
           - name: ES_JAVA_OPTS
-            value: "-Xmx128m -Xms128m"
+            value: "-Xmx256m -Xms256m"
           - name: node.data
             value: "true"
           - name: node.ingest

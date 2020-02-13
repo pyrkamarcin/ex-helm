@@ -12,13 +12,11 @@ spec:
   selector:
     matchLabels:
       name: application
-      stage: dev
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
         name: application
-        stage: dev
         release: {{ .Release.Name }}
     spec:
       containers:

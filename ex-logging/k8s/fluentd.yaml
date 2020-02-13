@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: fluentd-fluentd-elasticsearch
+  name: fluentd-fluentd-elasticsearc
   labels:
     app.kubernetes.io/name: fluentd-elasticsearch
     helm.sh/chart: fluentd-elasticsearch-5.3.1
@@ -373,7 +373,7 @@ spec:
         - name: OUTPUT_TYPE_NAME
           value: "_doc"
         - name: OUTPUT_BUFFER_CHUNK_LIMIT
-          value: "2M"
+          value: "16M"
         - name: OUTPUT_BUFFER_QUEUE_LIMIT
           value: "8"
         - name: OUTPUT_LOG_LEVEL

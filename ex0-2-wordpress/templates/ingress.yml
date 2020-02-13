@@ -1,0 +1,15 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+    annotations:
+        kubernetes.io/ingress.class: nginx
+    name: {{ .Release.Name }}-wordpress-ingress
+spec:
+    rules:
+        -   host: {{ .Release.Name }}.wordpress.localhost
+            http:
+                paths:
+                    - backend:
+                            serviceName: {{ .Release.Name }}-wordpress-service
+                            servicePort: 80
+                      path: /

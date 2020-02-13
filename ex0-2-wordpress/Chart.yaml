@@ -1,0 +1,10 @@
+apiVersion: v2
+name: ex0-2-wordpress
+version: 1.0.0
+appVersion: 5.3.2
+icon: https://d1q6f0aelx0por.cloudfront.net/product-logos/library-wordpress-logo.png
+
+dependencies:
+  - name: mysql
+    version: 1.6.2
+    repository: https://kubernetes-charts.storage.googleapis.com/

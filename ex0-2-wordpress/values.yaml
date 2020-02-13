@@ -1,0 +1,11 @@
+replicas: 3
+image:
+    name: wordpress
+    tag: 5.3.2-php7.2-apache
+
+
+mysql:
+    mysqlRootPassword: root
+    mysqlUser: user
+    mysqlPassword: password
+    mysqlDatabase: wordpress

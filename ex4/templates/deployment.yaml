@@ -7,7 +7,7 @@ metadata:
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
-    matchLabels:
+    matchLabels:clo
       {{- include "ex4.selectorLabels" . | nindent 6 }}
   template:
     metadata:
