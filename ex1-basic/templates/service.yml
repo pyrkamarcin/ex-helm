@@ -5,8 +5,9 @@ metadata:
 spec:
   selector:
     name: application
-    stage: dev
+    release: {{ .Release.Name }}
   type: ClusterIP
   ports:
     - port: 80
       targetPort: 80
+      

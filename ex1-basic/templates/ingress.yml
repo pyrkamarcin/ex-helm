@@ -13,3 +13,4 @@ spec:
                             serviceName: {{ .Release.Name }}-application-service
                             servicePort: 80
                       path: /
+                      
