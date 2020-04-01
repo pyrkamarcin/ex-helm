@@ -28,10 +28,3 @@ spec:
               cpu: "125m"
           ports:
             - containerPort: 80
-          volumeMounts:
-          - mountPath: "/var/log/nginx"
-            name: pvc
-      volumes:
-        - name: pvc
-          persistentVolumeClaim:
-            claimName: nginx-pvc
