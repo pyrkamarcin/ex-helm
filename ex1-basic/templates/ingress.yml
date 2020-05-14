@@ -1,16 +1,15 @@
 kind: Ingress
 apiVersion: networking.k8s.io/v1beta1
 metadata:
-    annotations:
-        kubernetes.io/ingress.class: nginx
     name: {{ .Release.Name }}-application-ingress
 spec:
     rules:
-        -   host: {{ .Release.Name }}.localhost
+        -
+            host: {{ .Release.Name }}.localhost
             http:
                 paths:
                     - backend:
                             serviceName: {{ .Release.Name }}-application-service
                             servicePort: 80
-                      path: /
+                      path: /app
                       

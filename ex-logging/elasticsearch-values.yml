@@ -19,4 +19,4 @@ volumeClaimTemplate:
   storageClassName: "hostpath"
   resources:
     requests:
-      storage: 100M
+      storage: 2G

@@ -1,5 +1,5 @@
 elasticsearch:
-  host: elasticsearch-master.default.svc.cluster.local
+  host: elasticsearch-master.logging.svc.cluster.local
 
 configMaps:
   useDefaults:

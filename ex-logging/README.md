@@ -1,15 +1,15 @@
 # Install Helm packages
 
 ```bash
-helm install --values fluentd-values.yml fluentd kiwigrid/fluentd-elasticsearch
+helm install --values fluentd-values.yml fluentd kiwigrid/fluentd-elasticsearch --namespace logging
 ```
 
 ```bash
-helm install --values elasticsearch-values.yml elasticsearch elastic/elasticsearch
+helm install --values elasticsearch-values.yml elasticsearch elastic/elasticsearch --namespace logging
 ```
 
 ```bash
-helm install kibana elastic/kibana
+helm install kibana elastic/kibana --namespace logging
 ```
 
 ```bash
