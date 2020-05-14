@@ -1,0 +1,6 @@
+image:
+  name: wordpress
+  tag: 5.4.0-php7.2-apache
+
+deployment:
+  replicas: 3

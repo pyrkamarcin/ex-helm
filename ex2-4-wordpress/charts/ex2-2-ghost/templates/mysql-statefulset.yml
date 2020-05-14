@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}-mysql-statefulset
+spec:
+  replicas: 1
+  serviceName: mysql
+  selector:
+    matchLabels:
+      name: mysql
+      stage: dev
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        name: mysql
+        stage: dev
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:5.7
+          resources:
+            limits:
+              memory: "512Mi"
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root_password
+            - name: MYSQL_USER
+              value: ghost_user
+            - name: MYSQL_PASSWORD
+              value: ghost_password
+            - name: MYSQL_DATABASE
+              value: ghost
+          volumeMounts:
+          - mountPath: "/var/lib/mysql"
+            name: my-pvc
+      volumes:
+        - name: my-pvc
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc

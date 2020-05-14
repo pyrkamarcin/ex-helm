@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}-ghost
+spec:
+  replicas: {{ .Values.replicas }}
+  serviceName: {{ .Release.Name }}-ghost
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxSurge: 1
+  #     maxUnavailable: 0
+  selector:
+    matchLabels:
+      name: ghost
+      stage: dev
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        name: ghost
+        stage: dev
+        release: {{ .Release.Name }}
+    spec:
+      initContainers:
+      - name: init-mydb
+        image: busybox:1.28
+        command: ['sh', '-c', 'until ! mysqladmin --user=ghost_user --password=ghost_password --host "{{ .Release.Name }}-mysql-service" ping --silent &> /dev/null; do sleep 1; done;']
+      containers:
+        - name: ghost
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+          resources:
+            limits:
+              memory: "512Mi"
+          ports:
+            - containerPort: 2368
+          env:
+            - name: database__client
+              value: mysql
+            - name: database__connection__host
+              value: {{ .Release.Name }}-mysql-service
+            - name: database__connection__user
+              value: ghost_user
+            - name: database__connection__password
+              value: ghost_password
+            - name: database__connection__database
+              value: ghost
+            - name: url
+              value: http://{{ .Release.Name }}.ghost.localhost
+

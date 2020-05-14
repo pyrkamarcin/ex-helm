@@ -1,0 +1,4 @@
+apiVersion: v2
+name: ex0-1-ghost
+version: 1.0.0
+appVersion: 3.1.1
