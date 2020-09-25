@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: fluentd-fluentd-elasticsearc
+  name: fluentd-fluentd-elasticsearch
   labels:
     app.kubernetes.io/name: fluentd-elasticsearch
     helm.sh/chart: fluentd-elasticsearch-5.3.1
