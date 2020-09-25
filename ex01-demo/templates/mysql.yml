@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql-statefulset
+  name: {{ .Release.Name }}-mysql-statefulset
 spec:
   replicas: 1
   serviceName: mysql
